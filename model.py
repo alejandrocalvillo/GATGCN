@@ -45,7 +45,6 @@ class MyGCN(torch.nn.Module):
     def forward(self, x, edge_index):
         for i in range(self.num_layers - 1):
             x = self.conv_layers[i](x, edge_index)
-            x = self.batch_norms[i](x)
             x = F.relu(x)
             x = self.dropout(x)
 
