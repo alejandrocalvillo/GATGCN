@@ -62,11 +62,16 @@ lrs = [0.1, 0.001, 1e-3, 1e-4, 1e-5, 1e-6, 1e-9]
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 #The goal is to demostrate that the model is learning, to do so let's take an array of epochs(epochs) and learning rates (lrs)
+input_dim = 2
+hidden_dim = 64
+output_dim = 1
+num_layers = 3
+dropout_rate = 0.5
 
 for epoch in epochs:
     for lr in lrs:
         
-        model = MyGCN().to(device)
+        model = MyGCN(input_dim, hidden_dim, output_dim, num_layers, dropout_rate).to(device)
         model.train(True)
 
         optimizer = torch.optim.Adam(model.parameters(), lr=lr)
