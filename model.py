@@ -20,7 +20,7 @@ class MyGCN(torch.nn.Module):
         super().__init__()
         #2 inputs, 64 as hidden state
         self.conv2 = ChebConv(2, 64, 9)
-        self.conv1 = GCNConv(64, 1, add_self_loops = False)
+        self.conv1 = GCNConv(180, 1, add_self_loops = False)
 
     def forward(self, x, edge_index):
         x, edge_index = x, edge_index
