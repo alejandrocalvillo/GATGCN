@@ -72,6 +72,7 @@ for epoch in epochs:
         optimizer = torch.optim.Adam(model.parameters(), lr=lr)
         iterations = 0
         loss_ar = []
+        print("Epoch: ", epoch, "Learning rate: ", lr)
         for i in range(epoch):
 
             testloader = torch.utils.data.DataLoader(dataset, batch_size=4, collate_fn= collate_wrapper, shuffle=True)
