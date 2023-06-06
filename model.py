@@ -10,7 +10,7 @@ import torch.optim as optim
 
 #Pythorch Geometric
 import torch_geometric
-from torch_geometric.nn import ChebConv
+from torch_geometric.nn import ChebConv, GCNConv
 
 
 
@@ -19,7 +19,7 @@ class MyGCN(torch.nn.Module):
     def __init__(self):
         super().__init__()
         #2 inputs, 64 as hidden state
-        self.conv1 = ChebConv(2, 64, 9)
+        self.conv1 = GCNConv(2, 64, add_self_loops = False)
         self.conv2 = ChebConv(64, 1, 9)
 
     def forward(self, x, edge_index):
